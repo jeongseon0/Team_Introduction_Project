@@ -19,9 +19,69 @@
             font-family: 'TheJamsil';
         }
 
+        /* toggle 버튼 설정 */
+        .ShowAndHidebtn {
+            /* 테두리와 이웃하는 요소 사이 간격 설정 */
+            margin: 30px auto 30px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            /* 세로 설정 */
+            height: 100px;
+            /* 배경색 설정*/
+            background: rgb(0, 132, 255);
+            /* 글자색 설정*/
+            color: white;
+            /* 테두리 설정 */
+            border: 1px solid white;
+            /* 테두리 둥글게 */
+            border-radius: 100px;
+            /* 테두리와 안쪽 사이 간격 설정 */
+            padding: 0px 150px;
+            /* 폰트 사이즈 설정 */
+            font-size: larger;
+            /* 포지션 설정 */
+            position: relative;
+        }
+
+        /* 버튼에 마우스 놓으면 애니메이션 발생 */
+        .ShowAndHidebtn:hover {
+            background: white;
+            color: rgb(0, 132, 255);
+        }
+
+        .ShowAndHidebtn:before,
+        .ShowAndHidebtn:after {
+            content: '';
+            /* 포지션 설정 */
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 2px;
+            width: 0;
+            background: rgb(0, 132, 255);
+            /* 애니메이션 시간 설정 */
+            transition: 400ms ease all;
+        }
+
+        .ShowAndHidebtn:after {
+            right: inherit;
+            top: inherit;
+            left: 0;
+            bottom: 0;
+        }
+
+        .ShowAndHidebtn:hover:before,
+        .ShowAndHidebtn:hover:after {
+            width: 100%;
+            /* 애니메이션 시간 설정 */
+            transition: 800ms ease all;
+        }
+
         /* 멤버추가박스 설정 */
         .MemberAddingBox {
-
             /* 가로길이 설정 */
             width: 400px;
             /* 테두리와 이웃하는 요소 사이 간격 설정 */
@@ -44,20 +104,24 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
+
+            font-size: large;
         }
 
-        /* 멤버추가박스안에 버튼 설정 */
+        /* 멤버추가박스 가입하기버튼 설정 */
         .AddingBoxbtn {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
+
+            color: white;
         }
 
-        /* 멤버추가박스안에 버튼 간격 설정 */
-        .AddingBoxbtn>button {
-            margin-right: 20px;
-        }
+        /* 멤버추가박스안에 버튼 추가했을 시 간격 설정 */
+        /*.AddingBoxbtn>button {
+                margin-right: 20px; 
+        }*/
 
         .Header {
             width: 1200px;
@@ -99,9 +163,12 @@
 
         /* 초기 카드 초기화*/
         $('#card').empty();
+        
+        /* 초기 가입신청서 숨기기*/
+        $("#Addingbox").hide();
 
-        /* 저장하기 버튼을 누르면 데이터 추가하는 코드 및 문구 띄우기 */
-        $("#savebtn").click(async function () {
+        /* 가입하기 버튼을 누르면 데이터 추가하는 코드 및 문구 띄우기 */
+        $("#joinbtn").click(async function () {
 
             let name = $('#name').val();
             let image = $('#image').val();
@@ -126,7 +193,7 @@
             window.location.reload();
         })
 
-        /* 추가한 데이터를 가지고 카드 추가하는 코드*/ 
+        /* 추가한 데이터를 가지고 카드 추가하는 코드*/
         let docs = await getDocs(collection(db, "member"));
         docs.forEach((doc) => {
             let row = doc.data();
@@ -135,9 +202,9 @@
             let Introduction = row['Introduction'];
             let MBTI = row['MBTI'];
             let advantage = row['advantage'];
-            let Collaboration = row['Collaboration'];  
+            let Collaboration = row['Collaboration'];
             let blog = row['blog'];
-           
+
             let temp = ` <div class="col">
                 <div class="card h-100">
                     <img src="${image}"
@@ -158,6 +225,10 @@
 
         });
 
+        // '우리와함께할래' 버튼을 누르면 MemberAddingBox가 toggle 되는 코드
+        $("#togglebtn").click(async function () {
+            $('#Addingbox').toggle();
+        })
 
     </script>
 
@@ -174,6 +245,10 @@
 
     </div>
 
+    <!-- 클릭시 MemberAddingBox toggle되는 버튼 -->
+    <div>
+        <button id="togglebtn" class="ShowAndHidebtn">우리와 함께할래?</button>
+    </div>
 
     <!-- 팀원 추가 부분 -->
     <div class="MemberAddingBox" id="Addingbox">
@@ -210,8 +285,7 @@
             <label for="floatingInput">블로그 주소를 적어주세요!</label>
         </div>
         <div class="AddingBoxbtn">
-            <button id="savebtn" type="button" class="btn btn-info">저장♥</button>
-            <button id="closebtn" type="button" class="btn btn-info">닫기</button>
+            <button id="joinbtn" type="button" class="btn btn-primary">가입하기♥</button>
         </div>
     </div>
 
