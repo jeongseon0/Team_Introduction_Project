@@ -143,6 +143,21 @@
         .card {
             border-radius: 10px;
         }
+
+        .col {
+            max-width: 300px;
+            overflow: hidden;
+        }
+
+        .card-img-top {
+            height: 280px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
     </style>
     <script type="module">
         /* Firebase SDK 라이브러리 가져오기 */
@@ -153,7 +168,13 @@
 
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
-            
+            apiKey: "AIzaSyCtLkLHgQnVfGz16R9u8A8iRyruSch6zI4",
+            authDomain: "sparta-611fd.firebaseapp.com",
+            projectId: "sparta-611fd",
+            storageBucket: "sparta-611fd.appspot.com",
+            messagingSenderId: "191276962345",
+            appId: "1:191276962345:web:e9be058b71862f36d84238",
+            measurementId: "G-3CE7B26HMQ"
             /* Firebase 본인정보*/
         };
 
@@ -163,7 +184,7 @@
 
         /* 초기 카드 초기화*/
         $('#card').empty();
-        
+
         /* 초기 가입신청서 숨기기*/
         $("#Addingbox").hide();
 
@@ -257,20 +278,20 @@
             <h>꒰໓ 천사팀 ໕꒱가입신청서</h>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="name" placeholder="이름을 적어주세요!">
-            <label for="floatingInput">이름을 적어주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
             <input type="email" class="form-control" id="image" placeholder="사진을 넣어주세요!">
             <label for="floatingInput">사진을 넣어주세요!</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="Introduction" placeholder="자신에 대해 자유롭게 표현해 주세요!">
-            <label for="floatingInput">자신에 대해 자유롭게 표현해 주세요!</label>
+            <input type="email" class="form-control" id="name" placeholder="이름을 적어주세요!">
+            <label for="floatingInput">이름을 적어주세요!</label>
         </div>
         <div class="form-floating mb-3">
             <input type="email" class="form-control" id="MBTI" placeholder="MBTI를 적어주세요!">
             <label for="floatingInput">MBTI를 적어주세요!</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="Introduction" placeholder="자신에 대해 자유롭게 표현해 주세요!">
+            <label for="floatingInput">자신에 대해 자유롭게 표현해 주세요!</label>
         </div>
         <div class="form-floating mb-3">
             <input type="email" class="form-control" id="advantage" placeholder="장점을 적어주세요!">
@@ -290,7 +311,7 @@
     </div>
 
     <!-- 팀원 소개 (슬라이드 or 카드) 부분 -->
-    <div class="MemberIntroduction">
+    <div class="MemberCards">
         <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
             <div class="col">
                 <div class="card h-100">
