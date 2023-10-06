@@ -183,7 +183,9 @@
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
+        import { deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
             apiKey: "AIzaSyChEcGiUv2M0enJ2kcc_T2rJTJnL2X3VlI",
@@ -200,11 +202,26 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        /* 초기 카드 초기화*/
+        /* 초기 카드 비우기*/
         $('#card').empty();
 
         /* 초기 가입신청서 숨기기*/
         $("#Addingbox").hide();
+
+        // '우리와함께할래' 버튼을 누르면 MemberAddingBox가 toggle 되고 글자가 바뀌는 코드
+        $("#togglebtn").click(async function () {
+            $('#Addingbox').toggle();
+
+            // 버튼의 지금 글자를 가져오는 코드
+            const buttonText = $(this).text();
+
+            // 버튼 글자 toggle 하는 코드
+            if (buttonText === "우리와 함께할래?") {
+                    $(this).text("가입해주길 바래!");
+                } else {
+                    $(this).text("우리와 함께할래?");
+                }
+        })
 
         /* 가입하기 버튼을 누르면 데이터 추가하는 코드 및 문구 띄우기 */
         $("#joinbtn").click(async function () {
@@ -244,9 +261,10 @@
             let Collaboration = row['Collaboration'];
             let blog = row['blog'];
 
+            // data-docid="${doc.id} << Firebase에서 해당 데이터를 식별하는데 사용
             let temp = ` <div class="col">
                 <div class="card h-100">
-                    <div class="image-top-button">
+                    <div class="image-top-button" data-docid="${doc.id}">
                         <img src="${image}"
                         class="card-img-top" alt="...">
                         <button id="Delbtn" type="button" class="btn-close Delbtnstyle" aria-label="Close"></button>
@@ -264,24 +282,35 @@
                 </div>
             </div> `;
             $('#card').append(temp);
-
         });
 
-        // '우리와함께할래' 버튼을 누르면 MemberAddingBox가 toggle 되고 글자가 바뀌는 코드
-        $("#togglebtn").click(async function () {
-            $('#Addingbox').toggle();
+        // card라는 id태그를 가진 요소에 클릭 이벤트 리스너를 등록. 
+        // card 내부에 어떤요소 [ex)삭제버튼]를 클릭할 때 실행 
+        document.getElementById('card').addEventListener('click', function (event) {
+            // 클릭이벤트 요소가 실제로 존재하고 Delbtnstyle라는 class태그를 가진 요소가 존재한다면 deleteAlbum 함수를 호출
+            // deleteAlbum 함수를 호출
+            if (event.target && event.target.classList.contains('Delbtnstyle')) {
+                deleteAlbum(event.target);
+            }
+        });
 
-            // 버튼의 지금 글자를 가져오는 코드
-            const buttonText = $(this).text();
+        // deleteAlbum 함수를 정의하고 Firebase에 해당하는 데이터를 삭제 및 새로고침 하는 코드 
+        function deleteAlbum(clickedButton) {
+            // data-docid 속성을 통해 문서 ID를 가져옴
+            const docId = clickedButton.parentNode.getAttribute('data-docid');
 
-            // 버튼 글자 toggle 하는 코드
-            if (buttonText === "우리와 함께할래?") {
-                    $(this).text("가입해주길 바래!");
-                } else {
-                    $(this).text("우리와 함께할래?");
-                }
-        })
-
+            // docId가 정의되어있고 confirm()함수를 통해 확인(true)하는 경우에만 문구를 띄우고 해당하는 데이터를 삭제하는 코드
+            if (docId && confirm('정말 우리팀에서 나갈꺼야?ㅠㅠ')) {
+                deleteDoc(doc(db, "member", docId))
+                    .then(() => {
+                        alert('아쉽지만 기회가 된다면 또 가입해줘!');
+                        // 웹페이지에 데이터 요소를 제거
+                        clickedButton.parentNode.parentNode.remove();
+                        // 화면 새로고침
+                        window.location.reload();
+                    });
+            }
+        }
     </script>
 
 </head>
