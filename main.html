@@ -118,11 +118,6 @@
             color: white;
         }
 
-        /* 멤버추가박스안에 버튼 추가했을 시 간격 설정 */
-        /*.AddingBoxbtn>button {
-                margin-right: 20px; 
-        }*/
-
         .Header {
             width: 1200px;
             border-radius: 10px;
@@ -168,13 +163,13 @@
 
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
-            apiKey: "AIzaSyCtLkLHgQnVfGz16R9u8A8iRyruSch6zI4",
-            authDomain: "sparta-611fd.firebaseapp.com",
-            projectId: "sparta-611fd",
-            storageBucket: "sparta-611fd.appspot.com",
-            messagingSenderId: "191276962345",
-            appId: "1:191276962345:web:e9be058b71862f36d84238",
-            measurementId: "G-3CE7B26HMQ"
+            apiKey: "AIzaSyChEcGiUv2M0enJ2kcc_T2rJTJnL2X3VlI",
+            authDomain: "sparta-5ee34.firebaseapp.com",
+            projectId: "sparta-5ee34",
+            storageBucket: "sparta-5ee34.appspot.com",
+            messagingSenderId: "243124035597",
+            appId: "1:243124035597:web:811f227e81c0dd1fa7f544",
+            measurementId: "G-D2MZ30JYR1"
             /* Firebase 본인정보*/
         };
 
@@ -246,9 +241,19 @@
 
         });
 
-        // '우리와함께할래' 버튼을 누르면 MemberAddingBox가 toggle 되는 코드
+        // '우리와함께할래' 버튼을 누르면 MemberAddingBox가 toggle 되고 글자가 바뀌는 코드
         $("#togglebtn").click(async function () {
             $('#Addingbox').toggle();
+
+            // 버튼의 지금 글자를 가져오는 코드
+            const buttonText = $(this).text();
+
+            // 버튼 글자 toggle 하는 코드
+            if (buttonText === "우리와 함께할래?") {
+                    $(this).text("가입해주길 바래!");
+                } else {
+                    $(this).text("우리와 함께할래?");
+                }
         })
 
     </script>
@@ -265,7 +270,7 @@
     <div class="TeamIntroduction">
 
     </div>
-    <!-- test -->
+    
     <!-- 클릭시 MemberAddingBox toggle되는 버튼 -->
     <div>
         <button id="togglebtn" class="ShowAndHidebtn">우리와 함께할래?</button>
