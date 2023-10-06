@@ -157,6 +157,7 @@
             align-items: center;
             justify-content: center;
         }
+
         /* 이미지 위 버튼 위치를 위한 설정 */
         .image-top-button {
             position: relative;
@@ -177,10 +178,9 @@
             padding: 5px 10px;
             /* 버튼 테두리 둥글게 */
             border-radius: 30%;
-    
+
             cursor: pointer;
         }
-
     </style>
     <script type="module">
         /* Firebase SDK 라이브러리 가져오기 */
@@ -190,7 +190,7 @@
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        
+
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
             apiKey: "AIzaSyChEcGiUv2M0enJ2kcc_T2rJTJnL2X3VlI",
@@ -222,21 +222,50 @@
 
             // 버튼 글자 toggle 하는 코드
             if (buttonText === "우리와 함께할래?") {
-                    $(this).text("가입해주길 바래!");
-                } else {
-                    $(this).text("우리와 함께할래?");
-                }
+                $(this).text("가입해주길 바래!");
+            } else {
+                $(this).text("우리와 함께할래?");
+            }
         })
 
         /* 가입하기 버튼을 누르면 데이터 추가하는 코드 및 문구 띄우기 */
         $("#joinbtn").click(async function () {
-            let name = $('#name').val();
             let image = $('#image').val();
-            let Introduction = $('#Introduction').val();
+            let name = $('#name').val();
             let MBTI = $('#MBTI').val();
+            let Introduction = $('#Introduction').val();
             let advantage = $('#advantage').val();
             let Collaboration = $('#Collaboration').val();
             let blog = $('#blog').val();
+
+            if (!image) {
+                alert('이미지 URL이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            if (!name) {
+                alert('이름이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            if (!MBTI) {
+                alert('MBTI가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            if (!Introduction) {
+                alert('자기소개가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            if (!advantage) {
+                alert('장점이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            if (!Collaboration) {
+                alert('스타일이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            if (!blog) {
+                alert('블로그 주소가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
 
             let doc = {
                 'name': name,
@@ -255,10 +284,10 @@
 
         /* 취소 버튼을 누르면 데이터입력칸이 비워지고 가입신청서 숨기는 코드*/
         $("#canclebtn").click(async function () {
-            $('#name').val('');
             $('#image').val('');
-            $('#Introduction').val('');
+            $('#name').val('');
             $('#MBTI').val('');
+            $('#Introduction').val('');
             $('#advantage').val('');
             $('#Collaboration').val('');
             $('#blog').val('');
@@ -270,10 +299,10 @@
         let docs = await getDocs(collection(db, "member"));
         docs.forEach((doc) => {
             let row = doc.data();
-            let name = row['name'];
             let image = row['image'];
-            let Introduction = row['Introduction'];
+            let name = row['name'];
             let MBTI = row['MBTI'];
+            let Introduction = row['Introduction'];
             let advantage = row['advantage'];
             let Collaboration = row['Collaboration'];
             let blog = row['blog'];
@@ -341,7 +370,7 @@
     <div class="TeamIntroduction">
 
     </div>
-    
+
     <!-- 클릭시 MemberAddingBox toggle되는 버튼 -->
     <div>
         <button id="togglebtn" class="ShowAndHidebtn">우리와 함께할래?</button>
