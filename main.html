@@ -118,6 +118,11 @@
             color: white;
         }
 
+        .AddingBoxbtn>button {
+            margin-right: 10px;
+        }
+
+        /* 헤더 설정 */
         .Header {
             width: 1200px;
             border-radius: 10px;
@@ -225,7 +230,6 @@
 
         /* 가입하기 버튼을 누르면 데이터 추가하는 코드 및 문구 띄우기 */
         $("#joinbtn").click(async function () {
-
             let name = $('#name').val();
             let image = $('#image').val();
             let Introduction = $('#Introduction').val();
@@ -247,6 +251,18 @@
             await addDoc(collection(db, "member"), doc);
             alert('가입신청 완료!');
             window.location.reload();
+        })
+
+        /* 취소 버튼을 누르면 데이터입력칸이 비워지고 가입신청서 숨기는 코드*/
+        $("#canclebtn").click(async function () {
+            $('#name').val('');
+            $('#image').val('');
+            $('#Introduction').val('');
+            $('#MBTI').val('');
+            $('#advantage').val('');
+            $('#Collaboration').val('');
+            $('#blog').val('');
+            $("#Addingbox").hide();
         })
 
         /* 추가한 데이터를 가지고 카드 추가하는 코드*/
@@ -288,7 +304,6 @@
         // card 내부에 어떤요소 [ex)삭제버튼]를 클릭할 때 실행 
         document.getElementById('card').addEventListener('click', function (event) {
             // 클릭이벤트 요소가 실제로 존재하고 Delbtnstyle라는 class태그를 가진 요소가 존재한다면 deleteAlbum 함수를 호출
-            // deleteAlbum 함수를 호출
             if (event.target && event.target.classList.contains('Delbtnstyle')) {
                 deleteAlbum(event.target);
             }
@@ -338,8 +353,8 @@
             <h>꒰໓ 천사팀 ໕꒱가입신청서</h>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="image" placeholder="사진을 넣어주세요!">
-            <label for="floatingInput">사진을 넣어주세요!</label>
+            <input type="email" class="form-control" id="image" placeholder="이미지 URL 넣어주세요!">
+            <label for="floatingInput">이미지 URL 넣어주세요!</label>
         </div>
         <div class="form-floating mb-3">
             <input type="email" class="form-control" id="name" placeholder="이름을 적어주세요!">
@@ -367,6 +382,7 @@
         </div>
         <div class="AddingBoxbtn">
             <button id="joinbtn" type="button" class="btn btn-primary">가입하기♥</button>
+            <button id="canclebtn" type="button" class="btn btn-primary">취소</button>
         </div>
     </div>
 
