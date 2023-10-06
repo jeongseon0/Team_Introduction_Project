@@ -88,11 +88,11 @@
             margin: 20px auto 20px auto;
             /* 박스 테두리 실선, 흰색 */
             border: 1px solid white;
-            /* 테두리와 안쪽 사이 간격 설정 */
+            /* 박스 내 여백 설정 */
             padding: 20px;
-            /* 박스테두리 그림자색지정, 넣어도되고 뺴도됌 */
+            /* 박스 테두리 그림자색지정 */
             box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
-            /* 박스테두리 둥글게 */
+            /* 박스 테두리 둥글게 */
             border-radius: 5px;
         }
 
@@ -151,6 +151,29 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+        /* 이미지 위 버튼 위치를 위한 설정 */
+        .image-top-button {
+            position: relative;
+        }
+
+        /* 삭제버튼 설정 */
+        .Delbtnstyle {
+            /* 포지션 설정 */
+            position: absolute;
+            /* 버튼 위치 설정 */
+            top: 10px;
+            right: 10px;
+            /* 버튼 배경색 설정 */
+            background-color: white;
+            /* 투명도 */
+            opacity: 50%;
+            /* 버튼 내 여백 설정 */
+            padding: 5px 10px;
+            /* 버튼 테두리 둥글게 */
+            border-radius: 30%;
+    
+            cursor: pointer;
         }
 
     </style>
@@ -223,8 +246,11 @@
 
             let temp = ` <div class="col">
                 <div class="card h-100">
-                    <img src="${image}"
+                    <div class="image-top-button">
+                        <img src="${image}"
                         class="card-img-top" alt="...">
+                        <button id="Delbtn" type="button" class="btn-close Delbtnstyle" aria-label="Close"></button>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">${name} <button type="button" class="btn btn-outline-danger"
                                 disabled>${MBTI}</button></h5>
