@@ -248,11 +248,19 @@
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
             /* Firebase 본인정보*/
-            
+            apiKey: "AIzaSyCtLkLHgQnVfGz16R9u8A8iRyruSch6zI4",
+            authDomain: "sparta-611fd.firebaseapp.com",
+            projectId: "sparta-611fd",
+            storageBucket: "sparta-611fd.appspot.com",
+            messagingSenderId: "191276962345",
+            appId: "1:191276962345:web:e9be058b71862f36d84238",
+            measurementId: "G-3CE7B26HMQ"
         };
 
         /* Firebase 인스턴스 초기화 */
@@ -388,6 +396,7 @@
             let Collaboration = row['Collaboration'];
             let blog = row['blog'];
 
+            // data-docid="${doc.id} << Firebase에서 해당 데이터를 식별하는데 사용
             let temp = `<li class="col">
                 <div class="card h-100">
                     <div class="image-top-button" data-docid="${doc.id}">
@@ -464,7 +473,7 @@
                     });
             }
         }
-        
+
     </script>
 </head>
 
@@ -523,7 +532,7 @@
         </div>
     </div>
     <div class="slideShow">
-        <ul class="slides">
+        <ul class="slides" id="slides">
             <li class="col">
                 <div class="card h-100">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
