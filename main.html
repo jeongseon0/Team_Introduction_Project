@@ -232,7 +232,7 @@
         $("#joinbtn").click(async function () {
             let image = $('#image').val();
             let name = $('#name').val();
-            let MBTI = $('#MBTI').val();
+            let MBTI = $('#MBTI').val().toUpperCase();
             let Introduction = $('#Introduction').val();
             let advantage = $('#advantage').val();
             let Collaboration = $('#Collaboration').val();
@@ -260,8 +260,24 @@
                 return;
             }
 
+            // MBTI 데이터 유효성검사
+            function MBTIcheck(MBTIdata) {
+                const MBTILIST = [
+                    "ISTJ", "ISTP", "ISFJ", "ISFP",
+                    "INTJ", "INTP", "INFJ", "INFP",
+                    "ESTJ", "ESTP", "ESFJ", "ESFP",
+                    "ENTJ", "ENTP", "ENFJ", "ENFP"
+                ]
+                return MBTILIST.includes(MBTIdata.toUpperCase());
+            }
+
             if (!MBTI) {
                 alert('MBTI가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            if (!MBTIcheck(MBTI)) {
+                alert("MBTI가 아닌거 같은데? 다시 확인해줘!");
                 return;
             }
 
@@ -284,7 +300,7 @@
                 alert('블로그 주소가 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
-            
+
             // 블로그 주소 데이터 유효성검사
             function blogURLcheck(blogUrldata) {
                 let blogcheck = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;

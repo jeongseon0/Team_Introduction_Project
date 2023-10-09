@@ -251,6 +251,13 @@
 
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
+            apiKey: "AIzaSyChEcGiUv2M0enJ2kcc_T2rJTJnL2X3VlI",
+            authDomain: "sparta-5ee34.firebaseapp.com",
+            projectId: "sparta-5ee34",
+            storageBucket: "sparta-5ee34.appspot.com",
+            messagingSenderId: "243124035597",
+            appId: "1:243124035597:web:811f227e81c0dd1fa7f544",
+            measurementId: "G-D2MZ30JYR1"
             /* Firebase 본인정보*/
             
         };
@@ -440,7 +447,7 @@
 
         // card라는 id태그를 가진 요소에 클릭 이벤트 리스너를 등록. 
         // card 내부에 어떤요소 [ex)삭제버튼]를 클릭할 때 실행 
-        document.getElementById('slides').addEventListener('click', function (event) {
+        document.getElementById('.slides').addEventListener('click', function (event) {
             // 클릭이벤트 요소가 실제로 존재하고 Delbtnstyle라는 class태그를 가진 요소가 존재한다면 deleteAlbum 함수를 호출
             if (event.target && event.target.classList.contains('Delbtnstyle')) {
                 deleteAlbum(event.target);
