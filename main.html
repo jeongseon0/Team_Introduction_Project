@@ -238,32 +238,61 @@
             let Collaboration = $('#Collaboration').val();
             let blog = $('#blog').val();
 
+            // 데이터 유효성검사
             if (!image) {
                 alert('이미지 URL이 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
+
+            // 이미지 URL 데이터 유효성검사
+            function imgURLcheck(imgUrldata) {
+                let imagecheck = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+                return imagecheck.test(imgUrldata);
+            }
+
+            if (!imgURLcheck(image)) {
+                alert("이미지 URL이 맞는지 꼭 확인해봐!");
+                return;
+            }
+
             if (!name) {
                 alert('이름이 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
+
             if (!MBTI) {
                 alert('MBTI가 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
+
             if (!Introduction) {
                 alert('자기소개가 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
+
             if (!advantage) {
                 alert('장점이 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
+
             if (!Collaboration) {
                 alert('스타일이 빠져있어! 빼먹지말고 적어줘!');
                 return;
             }
+            
             if (!blog) {
                 alert('블로그 주소가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+            
+            // 블로그 주소 데이터 유효성검사
+            function blogURLcheck(blogUrldata) {
+                let blogcheck = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+                return blogcheck.test(blogUrldata);
+            }
+
+            if (!blogURLcheck(blog)) {
+                alert("블로그 주소가 맞는지 꼭 확인해봐!")
                 return;
             }
 
