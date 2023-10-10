@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>멤버카드(슬라이드)</title>
+    <title>팀 소개 프로젝트</title>
     <!-- jqueryCDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- 부트스트랩CDN -->
@@ -17,6 +17,11 @@
 
         * {
             font-family: 'TheJamsil';
+        }
+
+        .page {
+            width: 1500px;
+            margin: auto;
         }
 
         .Header {
@@ -533,142 +538,145 @@
 </head>
 
 <body>
-    <!-- 헤더 부분 -->
-    <div class="Header">
-        <h1>천사</h1>
-    </div>
+    <div class="page">
+        <!-- 헤더 부분 -->
+        <div class="Header">
+            <h1>천사</h1>
+        </div>
 
-    <!-- 팀 소개 부분 -->
-    <div class="TeamIntroduction">
-        <div class="TItext">
-            <p>팀 소개 : 10월 04일(1004)에 처음 만나서? 모여서 프로젝트를 진행하게 되어서? </p>
-            <p>목표 : 부트캠프 수료 후 멋진 개발자가 되는 것 ٩(๑•̀o•́๑)و</p>
-            <p>규칙 : 서로 존중하며 소통하기</p>
-            <p>책임감 가지고 업무에 임하기</p>
-            <p>적극적인 협조로 큰 시너지 만들기</p>
+        <!-- 팀 소개 부분 -->
+        <div class="TeamIntroduction">
+            <div class="TItext">
+                <p>팀 소개 : 10월 04일(1004)에 처음 만나서? 모여서 프로젝트를 진행하게 되어서? </p>
+                <p>목표 : 부트캠프 수료 후 멋진 개발자가 되는 것 ٩(๑•̀o•́๑)و</p>
+                <p>규칙 : 서로 존중하며 소통하기</p>
+                <p>책임감 가지고 업무에 임하기</p>
+                <p>적극적인 협조로 큰 시너지 만들기</p>
+            </div>
+            <div class="picture">
+                <img class="Timage" src="https://i.pinimg.com/originals/2b/67/7b/2b677b34018b7ef9890223018ba2b83e.jpg" />
+            </div>
         </div>
-        <div class="picture">
-            <img class="Timage" src="https://i.pinimg.com/originals/2b/67/7b/2b677b34018b7ef9890223018ba2b83e.jpg" />
-        </div>
-    </div>
 
-    </div>
+        <!-- 클릭시 MemberAddingBox toggle되는 버튼 -->
+        <div>
+            <button id="togglebtn" class="ShowAndHidebtn">우리와 함께할래?</button>
+        </div>
 
-    <!-- 클릭시 MemberAddingBox toggle되는 버튼 -->
-    <div>
-        <button id="togglebtn" class="ShowAndHidebtn">우리와 함께할래?</button>
-    </div>
+        <!-- 팀원 추가 부분 -->
+        <div class="MemberAddingBox" id="Addingbox">
 
-    <!-- 팀원 추가 부분 -->
-    <div class="MemberAddingBox" id="Addingbox">
+            <div class="MemberAddingBoxTitle">
+                <h>꒰໓ 천사팀 ໕꒱가입신청서</h>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="url" class="form-control" id="image" placeholder="사진을 넣어주세요!">
+                <label for="image">사진을 넣어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="이름을 적어주세요!">
+                <label for="name">이름을 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="MBTI" placeholder="MBTI를 적어주세요!">
+                <label for="MBTI">MBTI를 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Introduction" placeholder="자신에 대해 자유롭게 표현해 주세요!">
+                <label for="Introduction">자신에 대해 자유롭게 표현해 주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="advantage" placeholder="장점을 적어주세요!">
+                <label for="advantage">장점을 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Collaboration" placeholder="자신만의 스타일 및 협업스타일을 적어주세요!">
+                <label for="Collaboration">자신만의 스타일 및 협업스타일을 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="url" class="form-control" id="blog" placeholder="블로그 주소를 적어주세요!">
+                <label for="blog">블로그 주소를 적어주세요!</label>
+            </div>
+            <div class="AddingBoxbtn">
+                <button id="joinbtn" type="button" class="btn btn-primary">가입하기♥</button>
+            </div>
+        </div>
 
-        <div class="MemberAddingBoxTitle">
-            <h>꒰໓ 천사팀 ໕꒱가입신청서</h>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="url" class="form-control" id="image" placeholder="사진을 넣어주세요!">
-            <label for="image">사진을 넣어주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="이름을 적어주세요!">
-            <label for="name">이름을 적어주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="MBTI" placeholder="MBTI를 적어주세요!">
-            <label for="MBTI">MBTI를 적어주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="Introduction" placeholder="자신에 대해 자유롭게 표현해 주세요!">
-            <label for="Introduction">자신에 대해 자유롭게 표현해 주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="advantage" placeholder="장점을 적어주세요!">
-            <label for="advantage">장점을 적어주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="Collaboration" placeholder="자신만의 스타일 및 협업스타일을 적어주세요!">
-            <label for="Collaboration">자신만의 스타일 및 협업스타일을 적어주세요!</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="url" class="form-control" id="blog" placeholder="블로그 주소를 적어주세요!">
-            <label for="blog">블로그 주소를 적어주세요!</label>
-        </div>
-        <div class="AddingBoxbtn">
-            <button id="joinbtn" type="button" class="btn btn-primary">가입하기♥</button>
-        </div>
-    </div>
-    <div class="slideShow">
-        <ul class="slides" id="slides">
-            <li class="col">
-                <div class="card h-100">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
-                                disabled>MBTI</button></h5>
-                        <p class="card-text">자신에 대한 설명</p>
-                        <p class="card-text">장점</p>
-                        <p class="card-text">자신의 스타일 및 협업 스타일</p>
+        <!-- 팀원카드 슬라이드 -->
+        <div class="slideShow">
+            <ul class="slides" id="slides">
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">블로그 주소</small>
+                </li>
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSlevml2Lu7CZA4AinoCYC8NlRbK-dr6gjRDzDVn4XEbZ1bCQ_T"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="col">
-                <div class="card h-100">
-                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSlevml2Lu7CZA4AinoCYC8NlRbK-dr6gjRDzDVn4XEbZ1bCQ_T"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
-                                disabled>MBTI</button></h5>
-                        <p class="card-text">자신에 대한 설명</p>
-                        <p class="card-text">장점</p>
-                        <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                </li>
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSW6eoTfM1IjDJ5N1g3_qvy5XEAlXOGskRzIyQLGzgu-t4ZSKQy"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">블로그 주소</small>
+                </li>
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="col">
-                <div class="card h-100">
-                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSW6eoTfM1IjDJ5N1g3_qvy5XEAlXOGskRzIyQLGzgu-t4ZSKQy"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
-                                disabled>MBTI</button></h5>
-                        <p class="card-text">자신에 대한 설명</p>
-                        <p class="card-text">장점</p>
-                        <p class="card-text">자신의 스타일 및 협업 스타일</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">블로그 주소</small>
-                    </div>
-                </div>
-            </li>
-            <li class="col">
-                <div class="card h-100">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
-                                disabled>MBTI</button></h5>
-                        <p class="card-text">자신에 대한 설명</p>
-                        <p class="card-text">장점</p>
-                        <p class="card-text">자신의 스타일 및 협업 스타일</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">블로그 주소</small>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <p class="controller">
-            <!-- &lang = '<' / &rang = '>' -->
-            <span class="prev">&lang;</span>
-            <span class="next">&rang;</span>
-        </p>
+                </li>
+            </ul>
+
+            <p class="controller">
+                <!-- &lang = '<' / &rang = '>' -->
+                <span class="prev">&lang;</span>
+                <span class="next">&rang;</span>
+            </p>
+        </div>
     </div>
 </body>
 
