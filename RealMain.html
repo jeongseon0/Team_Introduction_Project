@@ -425,10 +425,10 @@
             }
 
             let doc = {
-                'name': name,
                 'image': image,
-                'Introduction': Introduction,
+                'name': name,
                 'MBTI': MBTI,
+                'Introduction': Introduction,
                 'advantage': advantage,
                 'Collaboration': Collaboration,
                 'blog': blog
@@ -456,10 +456,10 @@
         let docs = await getDocs(collection(db, "member"));
         docs.forEach((doc) => {
             let row = doc.data();
-            let name = row['name'];
             let image = row['image'];
-            let Introduction = row['Introduction'];
+            let name = row['name'];
             let MBTI = row['MBTI'];
+            let Introduction = row['Introduction'];
             let advantage = row['advantage'];
             let Collaboration = row['Collaboration'];
             let blog = row['blog'];
