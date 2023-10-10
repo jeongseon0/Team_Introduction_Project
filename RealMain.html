@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 소개 프로젝트</title>
+    <!-- jqueryCDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 부트스트랩CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        /* 폰트 */
+        @import url('https://webfontworld.github.io/TheJamsil/TheJamsil.css');
+
+        * {
+            font-family: 'TheJamsil';
+        }
+
+        .page {
+            width: 1500px;
+            margin: auto;
+        }
+
+        .Header {
+            width: 1300px;
+            height: 180px;
+            border-radius: 10px;
+
+            margin: 30px auto 30px auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-image: url('https://i.pinimg.com/564x/94/8c/0d/948c0d0da7abae5a9f4859573f10b01d.jpg');
+            background-position: center;
+            background-size: cover;
+            color: white;
+            text-shadow: -2px 0px lightslategray, 0px 2px lightslategray, 2px 0px lightslategray, 0px -2px lightslategray;
+        }
+
+        /* KYU */
+        /* 팀 소개 */
+        .TeamIntroduction {
+            position: relative;
+            width: 1200px;
+            height: 450px;
+            margin: 50px auto 20px auto;
+            border-radius: 15px;
+            box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+        }
+
+        /* 팀 소개 부분 이미지 설정 */
+        .picture {
+            width: auto;
+            height: 400px;
+
+            float: left;
+            margin: 25px 0px auto 25px;
+        }
+        
+        /* 이미지 사이즈 설정 */
+        .Timage {
+            height: 400px;
+            border-radius: 10px;
+        }
+
+        /* 팀 소개 텍스트 부분 설정*/
+        .TItext {
+            width: 800px;
+            height: 400px;
+            
+            padding: 20px 0px 20px 40px;
+            float: left;
+            margin: 25px 25px auto 25px;
+        }
+
+        h5 {
+            line-height: 200%;
+        }
+
+        /* toggle 버튼 설정 */
+        .ShowAndHidebtn {
+            /* 테두리와 이웃하는 요소 사이 간격 설정 */
+            margin: 30px auto 30px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            /* 세로 설정 */
+            height: 100px;
+            /* 배경색 설정*/
+            background: rgb(0, 132, 255);
+            /* 글자색 설정*/
+            color: white;
+            /* 테두리 설정 */
+            border: 1px solid white;
+            /* 테두리 둥글게 */
+            border-radius: 100px;
+            /* 테두리와 안쪽 사이 간격 설정 */
+            padding: 0px 150px;
+            /* 폰트 사이즈 설정 */
+            font-size: larger;
+            /* 포지션 설정 */
+            position: relative;
+        }
+
+        /* 버튼에 마우스 놓으면 애니메이션 발생 */
+        .ShowAndHidebtn:hover {
+            background: white;
+            color: rgb(0, 132, 255);
+        }
+
+        .ShowAndHidebtn:before,
+        .ShowAndHidebtn:after {
+            content: '';
+            /* 포지션 설정 */
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 2px;
+            width: 0;
+            background: rgb(0, 132, 255);
+            /* 애니메이션 시간 설정 */
+            transition: 400ms ease all;
+        }
+
+        .ShowAndHidebtn:after {
+            right: inherit;
+            top: inherit;
+            left: 0;
+            bottom: 0;
+        }
+
+        .ShowAndHidebtn:hover:before,
+        .ShowAndHidebtn:hover:after {
+            width: 100%;
+            /* 애니메이션 시간 설정 */
+            transition: 800ms ease all;
+        }
+
+        /* 멤버추가박스 설정 */
+        .MemberAddingBox {
+            /* 가로길이 설정 */
+            width: 400px;
+            /* 테두리와 이웃하는 요소 사이 간격 설정 */
+            margin: 20px auto 50px auto;
+            /* 박스 테두리 실선, 흰색 */
+            border: 1px solid white;
+            /* 박스 내 여백 설정 */
+            padding: 20px;
+            /* 박스 테두리 그림자색지정 */
+            box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+            /* 박스 테두리 둥글게 */
+            border-radius: 15px;
+        }
+
+        /* 멤버추가박스 title 설정 */
+        .MemberAddingBoxTitle {
+            margin: 2px auto 20px auto;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            font-size: large;
+        }
+
+        /* 멤버추가박스 가입하기버튼 설정 */
+        .AddingBoxbtn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+        }
+
+        .slideShow {
+            width: 500px;
+            height: 700px;
+            position: relative;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+            overflow: hidden;
+        }
+
+        .slides {
+            position: absolute;
+            width: 2500px;
+            transition: left 0.5s ease-out;
+        }
+
+        .col {
+            width: 300px;
+            height: 600px;
+            margin-top: 50px;
+            overflow: hidden;
+        }
+
+        .card-img-top {
+            height: 280px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        li {
+            list-style-type: none;
+            margin-top: 35px;
+        }
+
+        li:first-child {
+            margin-left: 65px;
+        }
+
+        /* 슬라이드들 옆으로 정렬 */
+        li:not(:last-child) {
+            float: left;
+            margin-right: 120px;
+        }
+
+        li:last-child {
+            margin-right: 80px;
+        }
+
+        .btn {
+            margin-left: 10px;
+        }
+
+        .controller span {
+            position: absolute;
+            background-color: transparent;
+            color: black;
+            text-align: center;
+            border-radius: 50%;
+            padding: 10px 20px;
+            top: 50%;
+            font-size: 1.3em;
+            cursor: pointer;
+        }
+
+        .controller span:hover {
+            background-color: rgba(128, 128, 128, 0.2);
+        }
+
+        .controller span:active {
+            color: white;
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .prev:hover {
+            /* 이전 화살표에 마우스 커서가 올라가 있을 때 살짝 왼쪽으로 이동하는 효과*/
+            transform: translateX(-10px);
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .next:hover {
+            /* 다음 화살표에 마우스 커서가 올라가 있을 때 살짝 오른쪽으로 이동하는 효과*/
+            transform: translateX(10px);
+        }
+
+        /* 삭제버튼 설정 */
+        .Delbtnstyle {
+            /* 포지션 설정 */
+            position: absolute;
+            /* 버튼 위치 설정 */
+            top: 10px;
+            right: 10px;
+            /* 버튼 배경색 설정 */
+            background-color: white;
+            /* 투명도 */
+            opacity: 50%;
+            /* 버튼 내 여백 설정 */
+            padding: 5px 10px;
+            /* 버튼 테두리 둥글게 */
+            border-radius: 30%;
+
+            cursor: pointer;
+        }
+    </style>
+    <script type="module">
+        /* Firebase SDK 라이브러리 가져오기 */
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        /* Firebase 구성 정보 설정 */
+        const firebaseConfig = {
+            apiKey: "AIzaSyChEcGiUv2M0enJ2kcc_T2rJTJnL2X3VlI",
+            authDomain: "sparta-5ee34.firebaseapp.com",
+            projectId: "sparta-5ee34",
+            storageBucket: "sparta-5ee34.appspot.com",
+            messagingSenderId: "243124035597",
+            appId: "1:243124035597:web:811f227e81c0dd1fa7f544",
+            measurementId: "G-D2MZ30JYR1"
+            /* Firebase 본인정보*/
+        };
+
+        /* Firebase 인스턴스 초기화 */
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        /* 초기 카드 초기화*/
+        $('.slides').empty();
+
+        /* 초기 가입신청서 숨기기*/
+        $("#Addingbox").hide();
+
+        // '우리와함께할래' 버튼을 누르면 MemberAddingBox가 toggle 되고 글자가 바뀌는 코드
+        $("#togglebtn").click(async function () {
+            $('#Addingbox').toggle();
+
+            // 버튼의 지금 글자를 가져오는 코드
+            const buttonText = $(this).text();
+
+            // 버튼 글자 toggle 하는 코드
+            if (buttonText === "우리와 함께할래?") {
+                $(this).text("가입해주길 바래!");
+            } else {
+                $(this).text("우리와 함께할래?");
+            }
+        })
+
+        /* 가입하기 버튼을 누르면 데이터 추가하는 코드 및 문구 띄우기 */
+        $("#joinbtn").click(async function () {
+            let image = $('#image').val();
+            let name = $('#name').val();
+            let MBTI = $('#MBTI').val().toUpperCase();
+            let Introduction = $('#Introduction').val();
+            let advantage = $('#advantage').val();
+            let Collaboration = $('#Collaboration').val();
+            let blog = $('#blog').val();
+
+            // 데이터 유효성검사
+            if (!image) {
+                alert('이미지 URL이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            // 이미지 URL 데이터 유효성검사
+            function imgURLcheck(imgUrldata) {
+                let imagecheck = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+                return imagecheck.test(imgUrldata);
+            }
+
+            if (!imgURLcheck(image)) {
+                alert("이미지 URL이 맞는지 꼭 확인해봐!");
+                return;
+            }
+
+            if (!name) {
+                alert('이름이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            // MBTI 데이터 유효성검사
+            function MBTIcheck(MBTIdata) {
+                const MBTILIST = [
+                    "ISTJ", "ISTP", "ISFJ", "ISFP",
+                    "INTJ", "INTP", "INFJ", "INFP",
+                    "ESTJ", "ESTP", "ESFJ", "ESFP",
+                    "ENTJ", "ENTP", "ENFJ", "ENFP"
+                ]
+                return MBTILIST.includes(MBTIdata.toUpperCase());
+            }
+
+            if (!MBTI) {
+                alert('MBTI가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            if (!MBTIcheck(MBTI)) {
+                alert("MBTI가 아닌거 같은데? 다시 확인해줘!");
+                return;
+            }
+
+            if (!Introduction) {
+                alert('자기소개가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            if (!advantage) {
+                alert('장점이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            if (!Collaboration) {
+                alert('스타일이 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            if (!blog) {
+                alert('블로그 주소가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            // 블로그 주소 데이터 유효성검사
+            function blogURLcheck(blogUrldata) {
+                let blogcheck = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+                return blogcheck.test(blogUrldata);
+            }
+
+            if (!blogURLcheck(blog)) {
+                alert("블로그 주소가 맞는지 꼭 확인해봐!")
+                return;
+            }
+
+            let doc = {
+                'name': name,
+                'image': image,
+                'Introduction': Introduction,
+                'MBTI': MBTI,
+                'advantage': advantage,
+                'Collaboration': Collaboration,
+                'blog': blog
+            };
+
+            await addDoc(collection(db, "member"), doc);
+            alert('가입신청 완료!');
+            window.location.reload();
+        })
+
+        /* 취소 버튼을 누르면 데이터입력칸이 비워지고 가입신청서 숨기는 코드*/
+        $("#canclebtn").click(async function () {
+            $('#image').val('');
+            $('#name').val('');
+            $('#MBTI').val('');
+            $('#Introduction').val('');
+            $('#advantage').val('');
+            $('#Collaboration').val('');
+            $('#blog').val('');
+            $("#Addingbox").hide();
+            $("#togglebtn").text("우리와 함께할래?");
+        })
+
+        /* 추가한 데이터를 가지고 카드 추가하는 코드*/
+        let docs = await getDocs(collection(db, "member"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let name = row['name'];
+            let image = row['image'];
+            let Introduction = row['Introduction'];
+            let MBTI = row['MBTI'];
+            let advantage = row['advantage'];
+            let Collaboration = row['Collaboration'];
+            let blog = row['blog'];
+
+            // data-docid="${doc.id} << Firebase에서 해당 데이터를 식별하는데 사용
+            let temp = `<li class="col">
+                <div class="card h-100">
+                    <div class="image-top-button" data-docid="${doc.id}">
+                        <img src="${image}"
+                        class="card-img-top" alt="...">
+                        <button id="Delbtn" type="button" class="btn-close Delbtnstyle" aria-label="Close"></button>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${name}<button type="button" class="btn btn-outline-danger" disabled>${MBTI}</button></h5>
+                        <p class="card-text">${Introduction}</p>
+                        <p class="card-text">${advantage}</p>
+                        <p class="card-text">${Collaboration}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary"><a href=${blog}>${blog}</a></small>
+                    </div>
+                </div>
+            </li>`;
+            $('.slides').append(temp);
+        });
+
+        const slides = document.querySelector('.slides'); //전체 슬라이드 컨테이너
+        const slideImg = document.querySelectorAll('.slides li'); //모든 슬라이드들
+        let currentIdx = 0; //현재 슬라이드 index
+        const slideCount = slideImg.length; // 슬라이드 개수
+        const prev = document.querySelector('.prev'); //이전 버튼
+        const next = document.querySelector('.next'); //다음 버튼
+        const slideWidth = 300; //한개의 슬라이드 넓이
+        const slideMargin = 120; //슬라이드간의 margin 값
+
+        $(".prev").click("load", function (event) {
+            //전체 슬라이드 컨테이너 넓이 설정
+            slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
+
+            if (currentIdx !== 0) {
+                slides.style.left = -(currentIdx - 1) * 420 + 'px';
+                currentIdx = currentIdx - 1;
+            }
+        })
+
+        $(".next").click("load", function (event) {
+            //전체 슬라이드 컨테이너 넓이 설정
+            slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
+
+            if (currentIdx !== slideCount - 1) {
+                slides.style.left = -(currentIdx + 1) * 420 + 'px';
+                currentIdx = currentIdx + 1;
+            }
+        })
+
+        // card라는 id태그를 가진 요소에 클릭 이벤트 리스너를 등록. 
+        // card 내부에 어떤요소 [ex)삭제버튼]를 클릭할 때 실행 
+        document.getElementById('slides').addEventListener('click', function (event) {
+            // 클릭이벤트 요소가 실제로 존재하고 Delbtnstyle라는 class태그를 가진 요소가 존재한다면 deleteAlbum 함수를 호출
+            if (event.target && event.target.classList.contains('Delbtnstyle')) {
+                deleteAlbum(event.target);
+            }
+        });
+
+        // deleteAlbum 함수를 정의하고 Firebase에 해당하는 데이터를 삭제 및 새로고침 하는 코드 
+        function deleteAlbum(clickedButton) {
+            // data-docid 속성을 통해 문서 ID를 가져옴
+            const docId = clickedButton.parentNode.getAttribute('data-docid');
+
+            // docId가 정의되어있고 confirm()함수를 통해 확인(true)하는 경우에만 문구를 띄우고 해당하는 데이터를 삭제하는 코드
+            if (docId && confirm('정말 우리팀에서 나갈꺼야?ㅠㅠ')) {
+                deleteDoc(doc(db, "member", docId))
+                    .then(() => {
+                        alert('아쉽지만 기회가 된다면 또 가입해줘!');
+                        // 웹페이지에 데이터 요소를 제거
+                        clickedButton.parentNode.parentNode.remove();
+                        // 화면 새로고침
+                        window.location.reload();
+                    });
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <!-- 헤더 부분 -->
+        <div class="Header">
+            <h1>천사</h1>
+        </div>
+
+        <!-- 팀 소개 부분 -->
+        <div class="TeamIntroduction">
+            <div class="picture">
+                <img class="Timage"
+                    src="https://i.pinimg.com/originals/2b/67/7b/2b677b34018b7ef9890223018ba2b83e.jpg" />
+            </div>
+            <div class="TItext">
+                <h2>팀명: 천사 (1004)</h2>
+                <h5>이번 프로젝트를 계기로 10월 04일에 처음 만나 함께 합을 맞춰 나가게 된 팀</h5>
+                <h5>팀 목표 : 부트캠프를 잘 마치고 나서 멋진 개발자가 되는 것 ٩(๑•́o•́๑)و</h5>
+                <h5>팀 규칙</h5>
+                <h5>- 서로 존중하며 소통하기</h5>
+                <h5>- 책임감 가지고 업무에 임하기</h5>
+                <h5>- 적극적인 협조로 큰 시너지 만들기</h5>
+            </div>
+        </div>
+
+        <!-- 팀원카드 슬라이드 -->
+        <div class="slideShow">
+            <ul class="slides" id="slides">
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSlevml2Lu7CZA4AinoCYC8NlRbK-dr6gjRDzDVn4XEbZ1bCQ_T"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSW6eoTfM1IjDJ5N1g3_qvy5XEAlXOGskRzIyQLGzgu-t4ZSKQy"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="col">
+                    <div class="card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH4G9itWJN0e_tjVtjxZH890BUUAJPKeqmQ&usqp=CAU"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">이름 <button type="button" class="btn btn-outline-danger"
+                                    disabled>MBTI</button></h5>
+                            <p class="card-text">자신에 대한 설명</p>
+                            <p class="card-text">장점</p>
+                            <p class="card-text">자신의 스타일 및 협업 스타일</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">블로그 주소</small>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <p class="controller">
+                <!-- &lang = '<' / &rang = '>' -->
+                <span class="prev">&lang;</span>
+                <span class="next">&rang;</span>
+            </p>
+        </div>
+
+        <!-- 클릭시 MemberAddingBox toggle되는 버튼 -->
+        <div>
+            <button id="togglebtn" class="ShowAndHidebtn">우리와 함께할래?</button>
+        </div>
+        <!-- 팀원 추가 부분 -->
+        <div class="MemberAddingBox" id="Addingbox">
+
+            <div class="MemberAddingBoxTitle">
+                <h>꒰໓ 천사팀 ໕꒱가입신청서</h>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="url" class="form-control" id="image" placeholder="사진을 넣어주세요!">
+                <label for="image">사진을 넣어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="이름을 적어주세요!">
+                <label for="name">이름을 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="MBTI" placeholder="MBTI를 적어주세요!">
+                <label for="MBTI">MBTI를 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Introduction" placeholder="자신에 대해 자유롭게 표현해 주세요!">
+                <label for="Introduction">자신에 대해 자유롭게 표현해 주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="advantage" placeholder="장점을 적어주세요!">
+                <label for="advantage">장점을 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Collaboration" placeholder="자신만의 스타일 및 협업스타일을 적어주세요!">
+                <label for="Collaboration">자신만의 스타일 및 협업스타일을 적어주세요!</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="url" class="form-control" id="blog" placeholder="블로그 주소를 적어주세요!">
+                <label for="blog">블로그 주소를 적어주세요!</label>
+            </div>
+            <div class="AddingBoxbtn">
+                <button id="joinbtn" type="button" class="btn btn-primary">가입하기♥</button>
+                <button id="canclebtn" type="button" class="btn btn-primary">취소</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
