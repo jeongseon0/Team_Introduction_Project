@@ -47,7 +47,9 @@
 
             width: 800px;
             height: 400px;
-            border: 1px solid red;
+            border-radius: 15px;
+            box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+            padding: 5px;
             float: left;
             margin-left: 200px;
             margin-bottom: 50px;
@@ -62,11 +64,9 @@
 
             width: 200px;
             height: 400px;
-            border: 1px solid green;
             float: left;
             margin-left: 200px;
             margin-bottom: 50px;
-
 
         }
 
@@ -292,14 +292,14 @@
 
         /* Firebase 구성 정보 설정 */
         const firebaseConfig = {
+            apiKey: "AIzaSyChEcGiUv2M0enJ2kcc_T2rJTJnL2X3VlI",
+            authDomain: "sparta-5ee34.firebaseapp.com",
+            projectId: "sparta-5ee34",
+            storageBucket: "sparta-5ee34.appspot.com",
+            messagingSenderId: "243124035597",
+            appId: "1:243124035597:web:811f227e81c0dd1fa7f544",
+            measurementId: "G-D2MZ30JYR1"
             /* Firebase 본인정보*/
-            apiKey: "AIzaSyCtLkLHgQnVfGz16R9u8A8iRyruSch6zI4",
-            authDomain: "sparta-611fd.firebaseapp.com",
-            projectId: "sparta-611fd",
-            storageBucket: "sparta-611fd.appspot.com",
-            messagingSenderId: "191276962345",
-            appId: "1:191276962345:web:e9be058b71862f36d84238",
-            measurementId: "G-3CE7B26HMQ"
         };
 
         /* Firebase 인스턴스 초기화 */
@@ -331,7 +331,7 @@
         $("#joinbtn").click(async function () {
             let image = $('#image').val();
             let name = $('#name').val();
-            let MBTI = $('#MBTI').val();
+            let MBTI = $('#MBTI').val().toUpperCase();
             let Introduction = $('#Introduction').val();
             let advantage = $('#advantage').val();
             let Collaboration = $('#Collaboration').val();
@@ -359,8 +359,24 @@
                 return;
             }
 
+            // MBTI 데이터 유효성검사
+            function MBTIcheck(MBTIdata) {
+                const MBTILIST = [
+                    "ISTJ", "ISTP", "ISFJ", "ISFP",
+                    "INTJ", "INTP", "INFJ", "INFP",
+                    "ESTJ", "ESTP", "ESFJ", "ESFP",
+                    "ENTJ", "ENTP", "ENFJ", "ENFP"
+                ]
+                return MBTILIST.includes(MBTIdata.toUpperCase());
+            }
+
             if (!MBTI) {
                 alert('MBTI가 빠져있어! 빼먹지말고 적어줘!');
+                return;
+            }
+
+            if (!MBTIcheck(MBTI)) {
+                alert("MBTI가 아닌거 같은데? 다시 확인해줘!");
                 return;
             }
 
@@ -532,8 +548,7 @@
             <p>적극적인 협조로 큰 시너지 만들기</p>
         </div>
         <div class="picture">
-            <img class="Timage"
-                src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />
+            <img class="Timage" src="https://i.pinimg.com/originals/2b/67/7b/2b677b34018b7ef9890223018ba2b83e.jpg" />
         </div>
     </div>
 
