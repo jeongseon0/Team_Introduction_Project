@@ -1,0 +1,281 @@
+/* 폰트 */
+@import url('https://webfontworld.github.io/TheJamsil/TheJamsil.css');
+
+* {
+    font-family: 'TheJamsil';
+}
+
+.page {
+    width: 1500px;
+    margin: auto;
+}
+
+.Header {
+    width: 1300px;
+    height: 180px;
+    border-radius: 10px;
+
+    margin: 30px auto 30px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url('https://i.pinimg.com/564x/94/8c/0d/948c0d0da7abae5a9f4859573f10b01d.jpg');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    text-shadow: -2px 0px lightslategray, 0px 2px lightslategray, 2px 0px lightslategray, 0px -2px lightslategray;
+}
+
+/* KYU */
+/* 팀 소개 */
+.TeamIntroduction {
+    position: relative;
+    width: 1200px;
+    height: 450px;
+    margin: 50px auto 20px auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+}
+
+/* 팀 소개 부분 이미지 설정 */
+.picture {
+    width: auto;
+    height: 400px;
+
+    float: left;
+    margin: 25px 0px auto 25px;
+}
+
+/* 이미지 사이즈 설정 */
+.Timage {
+    height: 400px;
+    border-radius: 10px;
+}
+
+/* 팀 소개 텍스트 부분 설정*/
+.TItext {
+    width: 800px;
+    height: 400px;
+
+    padding: 20px 0px 20px 40px;
+    float: left;
+    margin: 25px 25px auto 25px;
+}
+
+h5 {
+    line-height: 200%;
+}
+
+/* toggle 버튼 설정 */
+.ShowAndHidebtn {
+    /* 테두리와 이웃하는 요소 사이 간격 설정 */
+    margin: 30px auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* 세로 설정 */
+    height: 100px;
+    /* 배경색 설정*/
+    background: rgb(0, 132, 255);
+    /* 글자색 설정*/
+    color: white;
+    /* 테두리 설정 */
+    border: 1px solid white;
+    /* 테두리 둥글게 */
+    border-radius: 100px;
+    /* 테두리와 안쪽 사이 간격 설정 */
+    padding: 0px 150px;
+    /* 폰트 사이즈 설정 */
+    font-size: larger;
+    /* 포지션 설정 */
+    position: relative;
+}
+
+/* 버튼에 마우스 놓으면 애니메이션 발생 */
+.ShowAndHidebtn:hover {
+    background: white;
+    color: rgb(0, 132, 255);
+}
+
+.ShowAndHidebtn:before,
+.ShowAndHidebtn:after {
+    content: '';
+    /* 포지션 설정 */
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: rgb(0, 132, 255);
+    /* 애니메이션 시간 설정 */
+    transition: 400ms ease all;
+}
+
+.ShowAndHidebtn:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.ShowAndHidebtn:hover:before,
+.ShowAndHidebtn:hover:after {
+    width: 100%;
+    /* 애니메이션 시간 설정 */
+    transition: 800ms ease all;
+}
+
+/* 멤버추가박스 설정 */
+.MemberAddingBox {
+    /* 가로길이 설정 */
+    width: 400px;
+    /* 테두리와 이웃하는 요소 사이 간격 설정 */
+    margin: 20px auto 50px auto;
+    /* 박스 테두리 실선, 흰색 */
+    border: 1px solid white;
+    /* 박스 내 여백 설정 */
+    padding: 20px;
+    /* 박스 테두리 그림자색지정 */
+    box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+    /* 박스 테두리 둥글게 */
+    border-radius: 15px;
+}
+
+/* 멤버추가박스 title 설정 */
+.MemberAddingBoxTitle {
+    margin: 2px auto 20px auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    font-size: large;
+}
+
+/* 멤버추가박스 가입하기버튼 설정 */
+.AddingBoxbtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+}
+
+.slideShow {
+    width: 500px;
+    height: 700px;
+    position: relative;
+    margin: 50px auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 0px rgb(0, 132, 255);
+    overflow: hidden;
+}
+
+.slides {
+    position: absolute;
+    width: 2500px;
+    transition: left 0.5s ease-out;
+}
+
+.col {
+    width: 300px;
+    height: 600px;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 280px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+li {
+    list-style-type: none;
+    margin-top: 35px;
+}
+
+li:first-child {
+    margin-left: 65px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+li:not(:last-child) {
+    float: left;
+    margin-right: 120px;
+}
+
+li:last-child {
+    margin-right: 80px;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+.controller span {
+    position: absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.controller span:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+.controller span:active {
+    color: white;
+}
+
+.prev {
+    left: 15px;
+}
+
+.prev:hover {
+    /* 이전 화살표에 마우스 커서가 올라가 있을 때 살짝 왼쪽으로 이동하는 효과*/
+    transform: translateX(-10px);
+}
+
+.next {
+    right: 15px;
+}
+
+.next:hover {
+    /* 다음 화살표에 마우스 커서가 올라가 있을 때 살짝 오른쪽으로 이동하는 효과*/
+    transform: translateX(10px);
+}
+
+/* 삭제버튼 설정 */
+.Delbtnstyle {
+    /* 포지션 설정 */
+    position: absolute;
+    /* 버튼 위치 설정 */
+    top: 10px;
+    right: 10px;
+    /* 버튼 배경색 설정 */
+    background-color: white;
+    /* 투명도 */
+    opacity: 50%;
+    /* 버튼 내 여백 설정 */
+    padding: 5px 10px;
+    /* 버튼 테두리 둥글게 */
+    border-radius: 30%;
+
+    cursor: pointer;
+}
